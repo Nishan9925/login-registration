@@ -12,7 +12,7 @@ function DashboardPage() {
   );
 
   const dispatch = useDispatch();
-
+  
   const handleLogout = () => {
     dispatch(logout());
   };

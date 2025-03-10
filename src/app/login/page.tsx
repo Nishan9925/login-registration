@@ -1,7 +1,4 @@
 "use client"
-
-import { useDispatch } from "react-redux";
-import { login } from "../../store/authSlice";
 import LoginForm from "@/components/LoginForm";
 
 function LoginPage() {

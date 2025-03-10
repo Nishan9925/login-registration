@@ -1,16 +1,23 @@
-'use client';
+import Button from "@/components/Button";
+import { registerUser } from "../actions";
 
-import RegisterForm from '../../components/RegisterForm';
+async function RegistrationPage() {
 
-function RegisterPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-md w-96">
         <h1 className="text-2xl font-bold mb-6 text-center">Register</h1>
-        <RegisterForm />
+        <form action={registerUser}>
+          <input type="email" name="email" placeholder="Email" required />
+          <input type="password" name="password" placeholder="Password" required />
+          <Button
+            type="submit"
+            label="Register"
+          />
+        </form>
       </div>
     </div>
   );
-}
+};
 
-export default RegisterPage;
+export default RegistrationPage;
