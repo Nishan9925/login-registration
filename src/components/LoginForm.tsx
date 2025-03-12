@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 import { login } from '../store/authSlice';
 import Button from './Button';
+import Input from './Input';
 
 function LoginForm() {
     const [email, setEmail] = useState('');
@@ -35,26 +36,32 @@ function LoginForm() {
         };
     };
 
+    const onChangeMail = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setEmail(e.target.value); 
+    };
+
+    const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setPassword(e.target.value);
+    };
+
     return (
         <form onSubmit={handleloginSubmit} className="space-y-4">
-                <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300
-                    rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                    placeholder="Email"
-                    required
-                />
-                <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 
-                    rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                    placeholder="Password"
-                    required
-                />
+            <Input 
+                type="email"
+                name="email"
+                value={email}
+                onChange={onChangeMail}
+                placeholder="Email"
+                required={true}
+            />
+            <Input 
+                type="password"
+                name="password"
+                value={password}
+                onChange={onChangePassword}
+                placeholder="Password"
+                required={true}
+            />
             {error && <p className="text-red-500 text-sm">{error}</p>}
             <div className="flex justify-center gap-4">
                 <Button 
